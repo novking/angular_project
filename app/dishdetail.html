@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- saved from url=(0322)https://d18ky98rnyall9.cloudfront.net/_49c417f481d797cf78b2985d8bded22f_dishdetail.html?Expires=1457481600&Signature=gWd6J6k25X92afs8cslXqnqw2g78A-PFY4Dgb-FXydK2Hf0yciJ-jP54kcPKWiNUN3c9tNmRJ9WYTOWArvRIqhLZ55vGc~KoExp10Gc9tJJysYaZS2IFycZz7qztWH-Birq1-cdQdG9~HM3iCLF6YkZXCnDWoggxKRihdNqnGL4_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A -->
-<html lang="en" ng-app="confusionApp"><head>
+<!-- saved from url=(0322)https://d18ky98rnyall9.cloudfront.net/_982060038631fb046e03fdb0d0bdd607_dishdetail.html?Expires=1458086400&Signature=ahIOrhZkASPQHq9OGJfriG6j3WVo-f5srUgz~SXg0v5jR5uBKvHLtqgwQN~5tZK6D7juyDxaWTJ62ggiL52uuULMA~i0udu5p38Y2OKYD8qxQpQcIAQL8arF3cz8YE3lp3m0DMiN5DuLsZQbnUrmBcMHoB43yGA~183Et8uVJdc_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A -->
+<html lang="en" ng-app="confusionApp"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
      <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +8,7 @@
          content must come *after* these tags -->
     <title>Ristorante Con Fusion: Menu</title>
         <!-- Bootstrap -->
+<!-- build:css styles/main.css -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -18,9 +19,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-    
     <link href="styles/bootstrap-social.css" rel="stylesheet">
     <link href="styles/mystyles.css" rel="stylesheet">
+<!-- endbuild -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,102 +29,78 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-</head>
+<style type="text/css"></style></head>
 
 <body>
 
     <div class="container">
-        <div class="row row-content" ng-controller="dishDetailController as dishCtrl">
+        <div class="row row-content" ng-controller="DishDetailController">
             <div class="col-xs-12">
                 <div class="media">
                     <div class="media-left media-middle">
                         <a href="#">
-                            <img class="media-object img-thumbnail" ng-src={{dishCtrl.dish.image}} alt="Uthappizza">
+                            <img class="media-object img-thumbnail" ng-src={{dish.image}} alt="Uthappizza">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h2 class="media-heading">{{dishCtrl.dish.name}}
-                         <span class="label label-danger">{{dishCtrl.dish.label}}</span>
-                         <span class="badge">{{dishCtrl.dish.price | currency}}</span></h2><p>{{dishCtrl.dish.description}}</p>
+                        <h2 class="media-heading">{{dish.name}}
+                         <span class="label label-danger">{{dish.label}}</span>
+                         <span class="badge">{{dish.price | currency}}</span></h2><p>{{dish.description}}</p>
                     </div>
                 </div>
             </div>
-            
             <div class="col-xs-9 col-xs-offset-1">
-                
-                
-                <div class="col-xs-9 control-label "><p><h4><strong>Customer Comments</strong></h4><label for="Order By">Order By:</label> <input id="Order By" type="text" ng-model="dishCtrl.dish.sortby"/></p>
+                <div class="col-xs-9 control-label "><p><h4><strong>Customer Comments</strong></h4><label for="Order By">Order By:</label> <input id="Order By" type="text" ng-model="sortby1"/></p>
                 </div>
                
                 <p style="padding:50px"></p>
                 
                 <div>
-                    <ul ng-repeat="comments in dishCtrl.dish.comments | orderBy: dishCtrl.dish.sortby">
+                    <ul ng-repeat="comments in dish.comments | orderBy: sortby1">
                         <blockquote>
                             <header>{{comments.rating}}&nbsp;Stars &clubs;</header><p>{{comments.comment}}</p><footer>{{comments.author}}, {{comments.date | date}}</footer>
                         </blockquote>
                     </ul>
                 </div>
             </div>
+            <div class="col-xs-9 col-xs-offset-1" ng-controller="DishCommentController">
+                    <ul class="list-unstyled" ng-show="isDirty">
+                        <blockquote>
+                            <header>{{comments.rating}}&nbsp;Stars &clubs;</header><p>{{comments.comment}}</p><footer>{{comments.author}}, {{comments.date | date}}</footer>
+                        </blockquote>
+                    </ul>
+                <form class="form-horizontal" name="commentForm" ng-submit="submitComment()" novalidate="">
+					<div class="form-group">
+                        <label for="author" class="col-sm-2 control-label">Your Name</label>
+                        <div class="col-sm-10" id="author" name="author"><input type="text"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating" class="col-sm-2 control-label">Rating</label>
+                        <div class="col-sm-10" id="rating"> 
+                            <label class="radio-inline"><input type="radio" id="1" name="rating" value="1"> 1</label>
+                            <label class="radio-inline"><input type="radio" id="2" name="rating" value="2"> 2</label>
+                            <label class="radio-inline"><input type="radio" id="3" name="rating" value="3"> 3</label>
+                            <label class="radio-inline"><input type="radio" id="4" name="rating" value="4"> 4</label>
+                            <label class="radio-inline"><input id="5" name="rating" value="5" type="radio" checked="checked"> 5</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment" class="col-sm-2 control-label">Your Comment:</label>
+                        <div class="col-sm-10" id="comment">
+                            <textarea placeholder="Your comment" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="btn"><input type="submit"></div>
+                    
+                </form>
+            </div>
         </div>
-
     </div>
 
+<!-- build:js scripts/main.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
-    <script>
-
-        var app = angular.module('confusionApp',[]);
-        
-        app.controller('dishDetailController', function() {
-
-            var dish={
-                          name:'Uthapizza',
-                          image: 'images/uthapizza.png',
-                          category: 'mains', 
-                          label:'Hot',
-                          price:'4.99',
-                          description:'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.',
-                          sortby:'',
-                           comments: [
-                               {
-                                   rating:5,
-                                   comment:"Imagine all the eatables, living in conFusion!",
-                                   author:"John Lemon",
-                                   date:"2012-10-16T17:57:28.556094Z"
-                               },
-                               {
-                                   rating:4,
-                                   comment:"Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
-                                   author:"Paul McVites",
-                                   date:"2014-09-05T17:57:28.556094Z"
-                               },
-                               {
-                                   rating:3,
-                                   comment:"Eat it, just eat it!",
-                                   author:"Michael Jaikishan",
-                                   date:"2015-02-13T17:57:28.556094Z"
-                               },
-                               {
-                                   rating:4,
-                                   comment:"Ultimate, Reaching for the stars!",
-                                   author:"Ringo Starry",
-                                   date:"2013-12-02T17:57:28.556094Z"
-                               },
-                               {
-                                   rating:2,
-                                   comment:"It's your birthday, we're gonna party!",
-                                   author:"25 Cent",
-                                   date:"2011-12-02T17:57:28.556094Z"
-                               }
-                               
-                           ]
-                    };
-            
-            this.dish = dish;
-           
-        });
-
-    </script>
+    <script src="./scripts/app.js"></script>
+<!-- endbuild -->
 
 
 
