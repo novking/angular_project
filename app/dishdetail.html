@@ -1,47 +1,13 @@
-<!DOCTYPE html>
 
-<html lang="en" ng-app="confusionApp">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head
-         content must come *after* these tags -->
-    <title>Ristorante Con Fusion: Menu</title>
-    <!-- Bootstrap -->
-    <!-- build:css styles/main.css -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css" rel="stylesheet">
-    <link href="styles/mystyles.css" rel="stylesheet">
-    <!-- endbuild -->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <style>.radio-inline {
-    margin-left: 30px;
+    margin-left: 10px;
 }
     .radio-inline {
-    margin-right: 30px;
+    margin-right: 10px;
 }</style>
-</head>
-
-<body>
-
+    
     <div class="container">
         <div class="row row-content" ng-controller="DishDetailController">
             <div class="col-xs-12">
@@ -63,7 +29,7 @@
                 <h4><strong>Customer Comments</strong></h4>
             </div>
             <div class="col-xs-8 control-label ">
-                <p>
+                
                     <label for="Order By" style="color: silver">Order By:</label>
                     <input id="Order By" type="text" ng-model="sortby1" />
             </div>
@@ -142,17 +108,3 @@
         </div>
     </div>
     </div>
-
-    <!-- build:js scripts/main.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
-    <script src="./scripts/app/app.js"></script>
-    <script src="./scripts/app/controllers.js"></script>
-    <script src="./scripts/app/services.js"></script>
-    <!-- endbuild -->
-
-
-
-
-</body>
-
-</html>
